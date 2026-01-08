@@ -92,7 +92,6 @@
         <section class="py-4">
             <div class="container">
                 <h3 class="mb-3">Курсы для вас</h3>
-                <!-- Список курсов -->
                 <ul class="list-group mb-3" id="courses-list">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Курс для начинающих
@@ -106,7 +105,6 @@
                         Продвинутый курс
                     </li>
                 </ul>
-                <!-- Пагинация -->
                 <nav>
                     <ul class="pagination" id="courses-pagination">
                         <li class="page-item disabled">
@@ -155,7 +153,6 @@
                 <button id="apply-button" class="btn btn-success"> Подать заявку </button>
             </div>
         </section>
-       <!-- Форма поиска репетиторов -->
         <section class="py-4">
             <div class="container">
                 <h4 class="mb-3">Поиск репетиторов</h4>
@@ -184,7 +181,7 @@
                 </div>
                 </form>
 
-                <!-- Таблица репетиторов -->
+                
                 <div class="table-responsive">
                 <table class="table table-hover" id="tutors-table">
                     <thead class="table-dark">
@@ -199,7 +196,7 @@
                     </tr>
                     </thead>
                     <tbody id="tutors-table-body">
-                    <!-- данные будут здесь -->
+                    
                     </tbody>
                 </table>
                 </div>
@@ -223,7 +220,104 @@
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             await initCourses();
-            await initTutors(); // инициализация репетиторов
+            await initTutors(); 
         });
     </script>
+    <!-- Модальное окно заявки на курс -->
+    <div class="modal fade" id="courseApplicationModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">Заявка на курс</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+            <form id="courseApplicationForm">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label fw-bold">Название курса:</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="courseName" readonly>
+                </div>
+            </div>
+            
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label fw-bold">Преподаватель:</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext" id="courseTutor" readonly>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Дата начала:</label>
+                <div class="col-sm-8">
+                <select class="form-select" id="courseStartDate" required>
+                    <option value="">Выберите дату</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Время занятия:</label>
+                <div class="col-sm-8">
+                <select class="form-select" id="courseTime" disabled>
+                    <option value="">Сначала выберите дату</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label fw-bold">Продолжительность:</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control-plaintext fw-bold" id="courseDuration" readonly>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Студентов:</label>
+                <div class="col-sm-8">
+                <input type="number" class="form-control" id="studentsCount" min="1" max="20" value="1">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Дополнительно:</label>
+                <div class="col-sm-8">
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="supplementary">
+                    <label class="form-check-label" for="supplementary">Доп. материалы</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="personalized">
+                    <label class="form-check-label" for="personalized">Индивидуальные занятия</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="excursions">
+                    <label class="form-check-label" for="excursions">Экскурсии</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="assessment">
+                    <label class="form-check-label" for="assessment">Оценка уровня владения языком</label>
+                </div>
+                  <div class="form-check mb-2">
+                    <input class="form-check-input" type="checkbox" id="interactive">
+                    <label class="form-check-label" for="interactive">Доступ к интерактивной онлайн-платформе</label>
+                </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label fw-bold">Стоимость:</label>
+                <div class="col-sm-8">
+                <input type="text" class="form-control form-control-lg fw-bold text-success" id="totalCost" readonly value="0 ₽">
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+            <button type="button" class="btn btn-primary" id="submitCourseApplication">Отправить</button>
+        </div>
+        </div>
+    </div>
+    </div>
 </body>
