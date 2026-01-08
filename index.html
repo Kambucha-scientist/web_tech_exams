@@ -150,49 +150,62 @@
                 </form>
             </div>
         </section>
-        <section class="py-4">
-            <div class="container">
-                <h3 class="mb-3">Доступные репетиторов</h3>
-                <!-- Список репетиторов -->
-                <ul class="list-group mb-3" id="tutors-list">
-                <li class="list-group-item tutor-item">
-                    Заглушка
-                </li>
-                <li class="list-group-item tutor-item">
-                    Заглушка
-                </li>
-                </ul>
-                <!-- Одна кнопка запроса -->
-                <button class="btn btn-success">
-                Нанять репетитора
-                </button>
+        <section class="py-3">
+            <div class="container text-left">
+                <button id="apply-button" class="btn btn-success"> Подать заявку </button>
             </div>
         </section>
+       <!-- Форма поиска репетиторов -->
         <section class="py-4">
             <div class="container">
                 <h4 class="mb-3">Поиск репетиторов</h4>
-                <form class="row g-2 align-items-end">
-                    <div class="col-md-5">
-                        <select class="form-select">
-                        <option value="">Любая квалификация</option>
-                        <option value="Магистр">MA</option>
-                        <option value="Бакалавр">BA</option>
-                        </select>
-                    </div>
-                    <div class="col-md-5">
-                        <input
-                        type="number"
-                        class="form-control"
-                        placeholder="Опыт преподавания"
-                        >
-                    </div>
-
-                    <div class="col-md-2">
-                        <button class="btn btn-primary w-100">
-                        Поиск
-                        </button>
-                    </div>
+                <form class="row g-3 mb-4" id="tutors-search-form">
+                <div class="col-md-6">
+                    <label class="form-label">Предлагаемые языки</label>
+                    <select id="tutors-languages" class="form-select">
+                    <option value="">Любой язык</option>
+                    <option value="English">Английский</option>
+                    <option value="Russian">Русский</option>
+                    <option value="Spanish">Испанский</option>
+                    <option value="French">Французский</option>
+                    <option value="Japanese">Японский</option>
+                    <option value="Italian">Итальянский</option>
+                    <option value="German">Немецкий</option>                                        
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Уровень языка</label>
+                    <select id="tutors-level" class="form-select">
+                    <option value="">Все уровни</option>
+                    <option value="Beginner">Начальный</option>
+                    <option value="Intermediate">Средний</option>
+                    <option value="Advanced">Продвинутый</option>
+                    </select>
+                </div>
                 </form>
+
+                <!-- Таблица репетиторов -->
+                <div class="table-responsive">
+                <table class="table table-hover" id="tutors-table">
+                    <thead class="table-dark">
+                    <tr>
+                        <th>Фото</th>
+                        <th>Имя</th>
+                        <th>Уровень языка</th>
+                        <th>Языки преподавания</th>
+                        <th>Опыт (лет)</th>
+                        <th>Ставка (руб/час)</th>
+                        <th>Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tutors-table-body">
+                    <!-- данные будут здесь -->
+                    </tbody>
+                </table>
+                </div>
+                <div class="text-end mt-4">
+                    <button id="contact-selected-tutor" class="btn btn-success" >Связаться с репетитором</button>
+                </div>
             </div>
         </section>
     </main>
@@ -206,5 +219,11 @@
     <script src="js/api.js"></script>
     <script src="js/notification.js"></script>
     <script src="js/courses.js"></script>
-    <script>document.addEventListener('DOMContentLoaded', initCourses); </script>
+    <script src="js/tutors.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await initCourses();
+            await initTutors(); // инициализация репетиторов
+        });
+    </script>
 </body>

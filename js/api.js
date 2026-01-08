@@ -19,4 +19,7 @@ function getCourses() {
   return apiGet('/api/courses');
 }
 
+function getTutors() {
+  return apiGet('/api/tutors');
+}
 
