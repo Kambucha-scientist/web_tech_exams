@@ -108,7 +108,7 @@
                 </ul>
                 <!-- Пагинация -->
                 <nav>
-                    <ul class="pagination">
+                    <ul class="pagination" id="courses-pagination">
                         <li class="page-item disabled">
                         <span class="page-link">Previous</span>
                         </li>
@@ -129,27 +129,23 @@
             <div class="container">
                 <h4 class="mb-3">Поиск курсов</h4>
 
-                <form class="row g-2 align-items-end">
+                <form class="row g-2 align-items-end" id="courses-search-form">
                 <div class="col-md-6">
                     <input
                     type="text"
+                    id="courses-search-name"
                     class="form-control"
                     placeholder="Поиск по названию"
                     >
                 </div>
 
                 <div class="col-md-4">
-                    <select class="form-select">
-                    <option value="">Начинающий</option>
+                    <select id="courses-search-level" class="form-select">
+                    <option value="">Все уровни</option>
+                    <option value="Beginner">Начинающий</option>
                     <option value="Intermediate">Средний</option>
                     <option value="Advanced">Продвинутый</option>
                     </select>
-                </div>
-
-                <div class="col-md-2">
-                    <button class="btn btn-primary w-100">
-                    Поиск
-                    </button>
                 </div>
                 </form>
             </div>
@@ -160,10 +156,10 @@
                 <!-- Список репетиторов -->
                 <ul class="list-group mb-3" id="tutors-list">
                 <li class="list-group-item tutor-item">
-                    Tutor 1 — Qualifications: MA in Russian — Experience: 5 years
+                    Заглушка
                 </li>
                 <li class="list-group-item tutor-item">
-                    Tutor 2 — Qualifications: BA in Languages — Experience: 3 years
+                    Заглушка
                 </li>
                 </ul>
                 <!-- Одна кнопка запроса -->
@@ -207,4 +203,8 @@
             <p>© 2026 Школа изучения иностранных языков | Language School</p>
         </div>
     </footer>
+    <script src="js/api.js"></script>
+    <script src="js/notification.js"></script>
+    <script src="js/courses.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', initCourses); </script>
 </body>
