@@ -223,7 +223,6 @@
             await initTutors(); 
         });
     </script>
-    <!-- Модальное окно заявки на курс -->
     <div class="modal fade" id="courseApplicationModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -319,5 +318,60 @@
         </div>
         </div>
     </div>
+    </div>
+    <div class="modal fade" id="contactTutorModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title">Связаться с репетитором</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="contactTutorForm">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Имя <span class="text-danger">*</span></label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="contactName" 
+                                placeholder="Введите ваше имя" 
+                                required
+                            >
+                            <div class="invalid-feedback">
+                                Пожалуйста, введите ваше имя.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Электронная почта <span class="text-danger">*</span></label>
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="contactEmail" 
+                                placeholder="example@mail.com" 
+                                required
+                            >
+                            <div class="invalid-feedback">
+                                Пожалуйста, введите корректный email адрес.
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="contactComments" class="form-label">Комментарии</label>
+                            <textarea 
+                                class="form-control" 
+                                id="contactComments" 
+                                rows="3" 
+                                placeholder="Ваши вопросы или пожелания..."
+                            ></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" id="submitContactForm">Отправить</button>
+                </div>
+            </div>
+        </div>
     </div>
 </body>

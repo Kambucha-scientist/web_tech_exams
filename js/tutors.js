@@ -109,4 +109,54 @@ function initTutorsSearch() {
   });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const contactButton = document.getElementById('contact-selected-tutor');
+    const submitButton = document.getElementById('submitContactForm');
+    const contactForm = document.getElementById('contactTutorForm');
+    
+    contactButton?.addEventListener('click', function() {
+        if (!selectedTutorId) {
+            showNotification('Пожалуйста, выберите репетитора сначала', 'warning');
+            return;
+        }
+        
+        const selectedTutor = tutors.find(t => t.id === selectedTutorId);
+        
+        if (selectedTutor) {
+            const modal = new bootstrap.Modal(document.getElementById('contactTutorModal'));
+            modal.show();
+            
+            contactForm.reset();
+            contactForm.classList.remove('was-validated');
+        }
+    });
+    
+    submitButton?.addEventListener('click', function() {
+        if (!contactForm.checkValidity()) {
+            contactForm.classList.add('was-validated');
+            return;
+        }
+        
+        
+        const selectedTutor = tutors.find(t => t.id === selectedTutorId);
+        
+        if (selectedTutor) {
+           
+            const modal = bootstrap.Modal.getInstance(document.getElementById('contactTutorModal'));
+            modal.hide();
+            
+            showNotification(`Ваше сообщение репетитору ${selectedTutor.name} успешно отправлено!`, 'success');
+            
+            contactForm.reset();
+            contactForm.classList.remove('was-validated');
+        }
+    });
+    
+    contactForm?.addEventListener('submit', function(e) {
+        e.preventDefault();
+        submitButton.click();
+    });
+});
+
+
 window.initTutors = initTutors;
